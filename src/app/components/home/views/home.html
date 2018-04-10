@@ -1,0 +1,58 @@
+<main *ngIf="insertView">
+
+    <div class="center">
+        <h1 class="text-center">ComicDiscover.com</h1>
+        <form #myForm="ngForm" id="myForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <input type="text" name="nombre" placeholder="Name" required class="form-control rounded inputs" [(ngModel)]="_object.nombre"
+                        />
+                        <!-- Comprobamos si el campo está modificado y es válido para mostrar un mensaje -->
+                        <span *ngIf="_object.nombre == ''">El nombre es obligatorio</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email" required class="form-control rounded inputs" [(ngModel)]="_object.email"
+                        />
+                        <span *ngIf="_object.email == ''">El correo es obligatorio</span>
+                    </div>
+                    <div style="text-align:center;">
+                        <button type="submit" class="btn btn-default">Ir</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</main>
+<div *ngIf="!insertView">
+    <div class="container">
+        <h1 class="text-center">ComicDiscover.com</h1>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="col-sm-4 col-md-4 col-lg-4" *ngFor="let personaje of personajes">
+                    <div class="caja">
+                        <img class="img-comic" src="{{personaje.thumbnail.path}}.{{personaje.thumbnail.extension}}">
+                        <h3>{{personaje.name}}</h3>
+                        <p>{{personaje.description}}</p>
+
+                        <div class="buttons" style="text-align: center;">
+                            <a class="btn btn-default" href="{{url.url}}" target="_blank" (click)="enlace(personaje, url.type, url.url)" *ngFor="let url of personaje.urls" style="margin:5px;">
+                                <div [ngSwitch]="url.type">
+                                    <span *ngSwitchCase="'detail'">Detalle</span>
+                                    <span *ngSwitchCase="'wiki'">Wiki</span>
+                                    <span *ngSwitchCase="'comiclink'">Comics</span>
+                                </div>
+                            </a>
+                           
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,22 @@
+body {
+    background: white;
+    font-size: 80%;
+    padding: 20px;
+  }
+  
+.center{
+    margin: 0 auto;
+    padding: 10% 35% 10% 35%
+}
+.caja{
+    border: 1px solid #000000;
+    margin: 20px;
+    padding: 10px;
+    height: 390px
+}
+.img-comic{
+    height: 25%;
+    width: auto;
+    display:block;
+    margin:auto;
+}
